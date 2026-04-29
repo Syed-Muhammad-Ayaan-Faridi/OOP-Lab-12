@@ -1,0 +1,51 @@
+// Generic Class
+class LibraryItem<T, U> {
+    private T item;    
+    private U info;    
+    // Constructor
+    public LibraryItem(T item, U info) {
+        this.item = item;
+        this.info = info;
+    }
+
+    // Getters
+    public T getItem() {
+        return item;
+    }
+    public U getInfo() {
+        return info;
+    }
+
+    public void display() {
+        System.out.println("Item: " + item + " | Info: " + info);
+    }
+
+    public static <X> boolean filterTitleLength(X title, int minLength) {
+        String str = title.toString();
+        return str.length() >= minLength;
+    }
+}
+
+// Main Class
+public class Task2 {
+    public static void main(String[] args) {
+
+        LibraryItem<Integer, String> book1 =
+                new LibraryItem<>(101, "Introduction to Java");
+
+        LibraryItem<String, String> book2 = new LibraryItem<>("ISBN-9988898", "AI Basics");
+
+        book1.display();
+        book2.display();
+
+        System.out.println("Books with title length >= 10: ");
+
+        if (LibraryItem.filterTitleLength(book1.getInfo(), 10)) {
+            book1.display();
+        }
+
+        if (LibraryItem.filterTitleLength(book2.getInfo(), 10)) {
+            book2.display();
+        }
+    }
+}
